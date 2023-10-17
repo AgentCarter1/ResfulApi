@@ -1,16 +1,13 @@
 const express = require('express');
+const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
-const userRoutes = require("./app/routes/userRoutes.js")
+const userRouter = require("./app/routes/userRouter")
 const app = express();
-
 app.use(express.json());
 app.use(cookieParser());
-app.use(express.urlencoded({ extended: true }));
+app.use("/",userRouter);
 
-app.use("/",userRoutes)
 
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
+app.listen(3000, () => {
   console.log('Uygulama 3000 portunda çalışıyor.');
 });
